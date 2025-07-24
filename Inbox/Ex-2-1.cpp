@@ -32,7 +32,10 @@ void pop(int *stack)
 
 void peek(int *stack)
 {
-    cout<<"\nTop most element is "<<stack[top]<<" .................."<<endl;
+    if(top<0)
+        cout<<"Stack Underflow stack is empty.............";
+    else
+        cout<<"\nTop most element is "<<stack[top]<<" .................."<<endl;
 }
 
 int main()
