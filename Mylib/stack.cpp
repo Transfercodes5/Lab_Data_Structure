@@ -19,23 +19,27 @@ class Stack
 
     void push(T n)
     {
-        if(top<size)
+        if(!isfull())
         {
             top = top + 1;
             stack[top] = n;
+        }
+        else
+        {
+            throw out_of_range("Stack is FULL");
         }
     }
 
     T pop()
     {
-        if(top>-1)
+        if(!isempty())
         {
             top = top -1;
             return stack[top+1];
         }
         else
         {
-            return 0;
+            throw out_of_range("Stack is EMPTY");
         }
     }
 
@@ -43,7 +47,7 @@ class Stack
     T peek()
     {
         if(top<0)
-            return 0;
+            throw out_of_range("Stack is EMPTY");
         else
             return stack[top];
     }
@@ -74,10 +78,16 @@ class Stack
 
     bool isfull()
     {
-        if (top == size)
+        if (top == (size-1))
             return true;
         else
             return false;
     }
+
+    ~Stack() 
+    {
+        delete[] stack;
+    }
+
 
 };
