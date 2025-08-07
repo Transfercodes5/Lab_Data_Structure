@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "C:\Coding\Lab\Lab_DS\Inbox\stack.cpp"
+#include "C:\Coding\Lab\Lab_DS\Mylib\stack.cpp"
 using namespace std;
 
 int precedence(char c)
