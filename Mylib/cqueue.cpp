@@ -3,7 +3,7 @@ using namespace std;
 
 template <class T>
 
-class SQueue
+class CQueue
 {
     public:
 
@@ -12,7 +12,7 @@ class SQueue
     int f = -1;
     int r = -1;
 
-    SQueue(int s)
+    CQueue(int s)
     {
         this->size = s;
         queue = new T[size];
@@ -20,32 +20,42 @@ class SQueue
 
     bool enqueue(T value)
     {
-        if(isfull())
+        if (isfull())
         {
-            throw out_of_range("Queue is Full");
+            throw out_of_range("Queue is FULL");
         }
-
-        if(isempty())
+        
+        if (f == -1)
         {
-            f = 0;
-        }
-
-        r = r+1;
-        queue[r] = value;
-        return true;
-    }
-
-    T dequeue()
-    {
-        if(!isempty())
-        {
-            f = f+1;
-            return queue[f-1];
+            f = r = 0;
         }
         else
         {
+            r = (r+1)%size;
+        }
+        
+        queue[r] = value;
+        return true;
+    }
+    
+    T dequeue()
+    {
+        if (isempty())
+        {
             throw out_of_range("Queue is EMPTY");
         }
+
+        T temp = queue[f];
+
+        if (f == r)
+        {
+            f = r = -1;
+        }
+        else
+        {
+            f = (f+1)%size;
+        }
+        return temp;
     }
 
     T peek()
@@ -62,30 +72,32 @@ class SQueue
 
     void display()
     {
-        for(int i=f;i<=r;i++)
+        int i = f;
+        while(true)
         {
             cout<<"Element["<<i<<"] : "<<queue[i]<<endl;
+            
+            if (i == r)
+                break;
+            
+            i = (i+1)%size;
         }
     }
 
     bool isempty()
     {
-        if(f > r || f == -1)
+        if (f == -1)
             return true;
-        else
+        else 
             return false;
     }
 
     bool isfull()
     {
-        if(r == (size-1))
+        if ((r+1)%size == f)
             return true;
-        else
+        else 
             return false;
     }
 
-    ~SQueue()
-    {
-        delete[] queue;
-    }
 };

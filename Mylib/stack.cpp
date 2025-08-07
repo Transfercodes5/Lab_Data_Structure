@@ -17,12 +17,12 @@ class Stack
         stack = new T[size];
     }
 
-    void push(T n)
+    void push(T value)
     {
         if(!isfull())
         {
             top = top + 1;
-            stack[top] = n;
+            stack[top] = value;
         }
         else
         {
