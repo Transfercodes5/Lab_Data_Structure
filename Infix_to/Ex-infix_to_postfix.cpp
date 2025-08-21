@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-#include "C:\Coding\Lab\Lab_DS\Mylib\stack.cpp"
+#include <algorithm>
+#include "..\Mylib\stack.cpp"
 using namespace std;
 
 int precedence(char c)
@@ -29,11 +30,7 @@ int main()
     cout<<"Enter Infix Equation : ";
     getline(cin,infixeq);
 
-    for(int i=0;i<infixeq.length();i++)
-    {
-        if(isspace(infixeq[i]))
-            infixeq.erase(i,1);
-    }
+    infixeq.erase(remove_if(infixeq.begin(), infixeq.end(), ::isspace), infixeq.end());
 
     for(int i=0;i<infixeq.length();i++)
     {
