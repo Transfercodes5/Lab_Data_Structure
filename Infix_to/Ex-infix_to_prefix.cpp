@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-#include "..\Mylib\stack.cpp"
+#include "..\Mylib\Stack.cpp"
 using namespace std;
 
 int precedence(char c)
