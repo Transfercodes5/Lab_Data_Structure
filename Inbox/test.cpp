@@ -1,32 +1,49 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
 using namespace std;
+
+class Solution {
+  public:
+    void sort012(vector<int>& arr) {
+        // code here
+        int n = arr.size();
+
+        for(int i=0;i<(n-1);i++)
+        {
+            for(int j=0;j<(n-i-1);j++)
+            {
+                if(arr[j] > arr[j+1])
+                {
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+
+        // for(int i=0;i<n;i++)
+        // {
+        //     if(arr[i] == 0)
+        //     {
+
+        //     }
+        // }
+
+        cout<<"[";
+        for(int i=0;i<n-1;i++)
+        {
+            cout<<arr[i]<<", ";
+        }
+        cout<<arr[n-1]<<"]";
+    }
+};
 
 int main()
 {
+    Solution sol;
+    vector<int> arr = {1, 2, 3, 7, 5}; //12
+    vector<int> arr2 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; //15
+    vector<int> arr3 = {0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1}; //2
 
-    int *ptr;
-    int n = 4;
-
-    ptr = new int[n];
-
-    // cout<<sizeof(*ptr)<<endl;
-
-    ptr[0] = 0;
-    ptr[1] = 1;
-    ptr[2] = 2;
-    ptr[3] = 3;
-
-    for(int i=0;i<n;i++)
-    {
-        cout<<ptr[i];
-    }
-
-    int m = 6;
-
-    ptr = new int[m];
-
-    for(int i=0;i<m;i++)
-    {
-        cout<<ptr[i];
-    }
+    sol.sort012(arr3);
 }
