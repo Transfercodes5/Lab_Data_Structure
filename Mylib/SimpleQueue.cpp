@@ -30,8 +30,12 @@ class SQueue
             f = 0;
             r = 0;
         }
+        
+        if(r != 0)
+        {
+            r = r+1;
+        }
 
-        r = r+1;
         queue[r] = value;
         return true;
     }
