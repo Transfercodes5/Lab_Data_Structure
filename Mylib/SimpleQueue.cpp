@@ -25,15 +25,14 @@ class SQueue
             throw out_of_range("Queue is Full");
         }
 
-        if(isempty())
+        if (isempty())
         {
             f = 0;
             r = 0;
         }
-        
-        if(r != 0)
+        else
         {
-            r = r+1;
+        r = r + 1;
         }
 
         queue[r] = value;
