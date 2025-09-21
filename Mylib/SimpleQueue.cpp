@@ -28,6 +28,7 @@ class SQueue
         if(isempty())
         {
             f = 0;
+            r = 0;
         }
 
         r = r+1;
